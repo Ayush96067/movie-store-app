@@ -35,7 +35,7 @@ export default function MovieComponent({ movie }) {
 
   return (
     // Movie card container with hover effects
-    <div className="flex flex-col items-center gap-3 bg-[#1E1E1E] p-2 text-[#dfdede] hover:shadow-[.1px_.1px_10px_.1px_#000] lg:w-96 lg:p-6">
+    <div className="flex w-[80%] flex-col items-center gap-3 bg-[#1E1E1E] p-2 text-[#dfdede] hover:shadow-[.1px_.1px_10px_.1px_#000] lg:w-96 lg:p-6">
       {/* Movie poster container with responsive image */}
       <div className="relative h-96 w-72 overflow-hidden rounded-md md:w-80 lg:w-full">
         <Image

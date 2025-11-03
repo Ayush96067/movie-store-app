@@ -55,7 +55,7 @@ function SearchQuery({ params }) {
     // Main container with dark background
     <div className="relative bg-[#121212]">
       {/* Grid container for movie cards with responsive columns */}
-      <div className="grid grid-cols-1 place-items-center gap-x-8 gap-y-10 p-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-x-3 lg:gap-y-14 lg:p-6">
+      <div className="grid grid-cols-1 place-items-center gap-x-4 gap-y-10 p-4 md:grid-cols-3 lg:grid-cols-4 lg:gap-x-5 lg:gap-y-14 lg:p-6">
         {/* Render movie cards for each movie in the results */}
         {movies.map((movie) => (
           <MovieComponent key={movie.imdbID} movie={movie} />
