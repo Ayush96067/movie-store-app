@@ -22,7 +22,7 @@ const useMovieSearch = (query, page) => {
       setIsLoading(true);
       try {
         const res = await fetch(
-          `//www.omdbapi.com/?apikey=1596c620&s=${query}&page=${page}`,
+          `${BASE_URL}/?apikey=${API_KEY}&s=${query}&page=${page}`,
         );
         if (!res.ok) {
           throw new Error("Network response was not ok");
@@ -31,12 +31,17 @@ const useMovieSearch = (query, page) => {
         const data = await res.json();
 
         if (data.Response === "False") {
+          // No results are found
           setMovies([]);
           setNoResults(true);
           setTotalResults(0);
         } else if (data.Search && Array.isArray(data.Search)) {
+          // Results stored to display
           setMovies(data.Search);
+
+          // Update totalResults count only on 1st page - No updation on every render (changing of pages)
           if (page === 1) setTotalResults(parseInt(data.totalResults) || 0);
+
           setNoResults(false);
           setHasError(false);
         } else {

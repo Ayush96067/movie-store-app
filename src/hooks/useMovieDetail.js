@@ -10,6 +10,7 @@ const useMovieDetail = (imdbId) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // Fetch individual movie using ImdbID
     async function fetchMovie() {
       setIsLoading(true);
       try {
