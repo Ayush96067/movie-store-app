@@ -30,7 +30,7 @@ export default function MainContent({ setQuery, query }) {
       <h1 className="text mb-4 text-4xl font-extrabold text-gray-400 md:text-5xl lg:text-7xl">
         Let&apos;s Explore
       </h1>
-      <div className="flex flex-col gap-5">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-5">
         <input
           placeholder="Search..."
           value={query}
@@ -41,8 +41,15 @@ export default function MainContent({ setQuery, query }) {
         <div className="flex justify-between">
           {/* Search Button */}
           <Button
+            type="Submit"
             onHandleClick={handleSubmit}
             text={"Search"}
+            classAdd={"mt-2  p-3  md:text-lg"}
+          />
+          <Button
+            type="reset"
+            text={"Reset"}
+            onHandleClick={() => setQuery("")}
             classAdd={"mt-2  p-3  md:text-lg"}
           />
           {/* Favourites Button */}
@@ -53,7 +60,7 @@ export default function MainContent({ setQuery, query }) {
             classAdd={"bg-pink-400 text-black mt-2  p-3 md:text-lg"}
           />
         </div>
-      </div>
+      </form>
     </div>
   );
 }

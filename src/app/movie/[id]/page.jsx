@@ -20,7 +20,10 @@ const StyledPara = styled.p`
   gap: 0.5rem;
 `;
 
+const FALLBACK_IMAGE_PATH = process.env.NEXT_PUBLIC_FALLBACK_IMAGE_PATH;
+
 function Movie({ params }) {
+  const [imageError, setImageError] = useState(false);
   const imdbId = params.id;
 
   // custom hook for getting details of movie
@@ -39,7 +42,7 @@ function Movie({ params }) {
     Director = "N/A",
     Genre = "N/A",
     Plot = "N/A",
-    Poster = "/placeholder-movie.jpg", // You should add a placeholder image
+    Poster = FALLBACK_IMAGE_PATH, // You should add a placeholder image
     Released = "N/A",
     Runtime = "N/A",
     Title = "Movie Title",
@@ -48,26 +51,31 @@ function Movie({ params }) {
     imdbVotes = "N/A",
   } = movie;
 
+  const posterSrc =
+    Poster && Poster !== "N/A" && !imageError ? Poster : FALLBACK_IMAGE_PATH;
+
   return (
     <div className="relative min-h-screen text-white">
       <Image
-        src={Poster}
+        src={posterSrc}
         alt={`${Title} Poster Background`}
         fill
         className="-z-10 object-cover"
         priority={true}
         sizes="100vw"
+        onError={() => setImageError(true)}
       />
       <div className="flex min-h-screen w-full justify-center backdrop-blur-lg backdrop-brightness-50 lg:items-center">
         <div className="mt-8 grid h-auto w-[80%] gap-y-6 bg-[#6a6a6a33] p-3 shadow-2xl shadow-black md:grid-cols-[30%_auto] lg:mt-0">
           <Image
-            src={Poster}
+            src={posterSrc}
             alt={`${Title} Poster Background`}
             className="object-cover"
             priority={true}
             sizes="100vw"
             width={400}
             height={100}
+            onError={() => setImageError(true)}
           />
           <div className="flex flex-col justify-center gap-y-4 text-[1.1rem] font-semibold text-gray-300 md:text-[1.2rem] lg:p-10 lg:text-[1.3rem]">
             <p className="flex w-fit gap-3 border-8 border-double border-[#540154] p-2 text-2xl md:text-3xl lg:text-4xl">
