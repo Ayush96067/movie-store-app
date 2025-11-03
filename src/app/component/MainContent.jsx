@@ -40,18 +40,21 @@ export default function MainContent({ setQuery, query }) {
         {error && <p className="text-red-400">{error}</p>}
         <div className="flex justify-between">
           {/* Search Button */}
-          <Button
-            type="Submit"
-            onHandleClick={handleSubmit}
-            text={"Search"}
-            classAdd={"mt-2  p-3  md:text-lg"}
-          />
-          <Button
-            type="reset"
-            text={"Reset"}
-            onHandleClick={() => setQuery("")}
-            classAdd={"mt-2  p-3  md:text-lg"}
-          />
+          <div className="flex gap-2">
+            <Button
+              type="Submit"
+              onHandleClick={handleSubmit}
+              text={"Search"}
+              classAdd={"mt-2  p-3  md:text-lg"}
+            />
+            <Button
+              type="reset"
+              text={"Reset"}
+              onHandleClick={() => setQuery("")}
+              classAdd={"mt-2  p-3  md:text-lg"}
+              icon={""}
+            />
+          </div>
           {/* Favourites Button */}
           <Button
             text={"Favourites"}
