@@ -1,7 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import Link from "next/link";
-import { MovieProvider } from "./context/MovieContext";
+import { MovieProvider } from "../context/MovieContext";
 import { Suspense } from "react";
 import Loading from "./loading";
 

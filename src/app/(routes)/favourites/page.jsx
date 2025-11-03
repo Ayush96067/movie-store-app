@@ -1,10 +1,10 @@
 "use client";
 
-import { useMovieContext } from "../context/MovieContext";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Loading from "./loading";
+import { useMovieContext } from "@/context/MovieContext";
 
 const FALLBACK_BG_IMAGE = process.env.NEXT_PUBLIC_FALLBACK_IMAGE_PATH;
 
